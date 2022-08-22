@@ -1,10 +1,7 @@
-package kz.sdu.eventstelegrambot.entity.eventEntities;
+package kz.sdu.eventstelegrambot.entity;
 
 import kz.sdu.eventstelegrambot.enums.EventStatus;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Blob;
@@ -17,7 +14,6 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,6 +30,8 @@ public class Event {
     @Column(name = "status", nullable = false)
     @Enumerated(EnumType.STRING)
     private EventStatus status;
+    @Column(name = "enable")
+    private Boolean enable;
     @ManyToMany(cascade = CascadeType.ALL, targetEntity = EventContact.class)
     @JoinTable(name = "event_contacts_connection",
             joinColumns = @JoinColumn(name = "id"),

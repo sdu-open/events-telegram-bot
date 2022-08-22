@@ -9,7 +9,8 @@ create table event
     start_date    date         not null,
     status        varchar(255) not null,
     title         varchar(255) null,
-    user_creator  int          not null
+    user_creator  int          not null,
+    enable        bit          null
 );
 
 create table event_contacts
@@ -65,6 +66,8 @@ create table account
     rule     int          null,
     username varchar(15)  null,
     user_id  int          null,
+    constraint UK_csqiqkrbqxe20l8ku84bxoxla
+        unique (username),
     constraint UK_gex1lmaqpg0ir5g1f5eftyaa1
         unique (username),
     constraint FK7m8ru44m93ukyb61dfxw0apf6
@@ -80,6 +83,8 @@ create table telegram_user
     last_name  varchar(255) null,
     user_id    int          null,
     constraint UK_8fjrx8y7kifvm13xif72sy5bf
+        unique (chat_id),
+    constraint UK_m570n4451q46bis9vgm1iyepr
         unique (chat_id),
     constraint FKfelasxqbpekowffsct1no4qmr
         foreign key (user_id) references user (id)
