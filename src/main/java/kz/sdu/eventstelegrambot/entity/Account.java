@@ -1,6 +1,5 @@
 package kz.sdu.eventstelegrambot.entity;
 
-import kz.sdu.eventstelegrambot.enums.AccountRule;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,8 +27,6 @@ public class Account {
     private String password;
     @Column(name = "enable")
     private Boolean enable;
-    @Column(name = "rule")
-    private AccountRule rule;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
