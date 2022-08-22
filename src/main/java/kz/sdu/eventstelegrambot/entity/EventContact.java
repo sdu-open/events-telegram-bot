@@ -1,4 +1,4 @@
-package kz.sdu.eventstelegrambot.entity.eventEntities;
+package kz.sdu.eventstelegrambot.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
