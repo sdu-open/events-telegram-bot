@@ -1,7 +1,8 @@
 package kz.sdu.eventstelegrambot.entity;
 
-import kz.sdu.eventstelegrambot.enums.EventStatus;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Blob;
@@ -27,9 +28,6 @@ public class Event {
     private String title;
     @Column(name = "description")
     private String description;
-    @Column(name = "status", nullable = false)
-    @Enumerated(EnumType.STRING)
-    private EventStatus status;
     @Column(name = "enable")
     private Boolean enable;
     @ManyToMany(cascade = CascadeType.ALL, targetEntity = EventContact.class)
@@ -41,7 +39,6 @@ public class Event {
     private Date startDate;
     @Column(name = "end_date")
     private Date endDate;
-
     @Column(name = "user_creator", nullable = false, updatable = false)
     private Integer userCreator;
 
@@ -49,7 +46,7 @@ public class Event {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Event event)) return false;
-        return getId().equals(event.getId()) && getStatus() == event.getStatus();
+        return getId().equals(event.getId());
     }
 
     @Override
